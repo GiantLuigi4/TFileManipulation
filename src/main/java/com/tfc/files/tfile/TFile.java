@@ -1,4 +1,4 @@
-package com.tfc.files;
+package com.tfc.files.tfile;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -9,6 +9,10 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
+/**
+ * Custom file system, as an alternative to zips in zips
+ * Gzipping this will actually produce a file smaller than zips in zips or just a plain zip
+ */
 public class TFile {
 	private TFile inner = null;
 	private final HashMap<String, String> otherFileHashMap = new HashMap<>();

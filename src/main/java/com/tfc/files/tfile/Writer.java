@@ -1,7 +1,5 @@
-package com.tfc.files;
+package com.tfc.files.tfile;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 

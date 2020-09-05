@@ -1,10 +1,9 @@
 package com.tfc.files.test;
 
-import com.tfc.files.TFile;
-import com.tfc.files.Writer;
+import com.tfc.files.tfile.TFile;
+import com.tfc.files.tfile.Writer;
 
 import java.io.File;
-import java.io.FileOutputStream;
 
 public class Test {
 	private static final String dir = System.getProperty("user.dir");
