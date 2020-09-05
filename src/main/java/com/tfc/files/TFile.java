@@ -213,8 +213,8 @@ public class TFile {
 	/**
 	 * Creates a new TFile inside this file
 	 */
-	public void createInnerTFile() {
-		this.inner = new TFile();
+	public TFile createInnerTFile() {
+		return this.inner = new TFile();
 	}
 	
 	/**
