@@ -44,14 +44,10 @@ public class Numbers {
 				for (long i1 = 2; i1 < iterationCount; i1++) {
 					String oldS = ("" + amp(i, i1));
 					String newS = (((char) 1) + "" + i + "*" + i1 + "" + ((char) 1));
-					if (out.contains(oldS)) {
-						if (oldS.length() > newS.length()) {
-							if ((oldStr + newStr).length() > (oldS + newS).length()) {
-								oldStr = oldS;
-								newStr = newS;
-								replaced = true;
-							}
-						}
+					if (oldS.length() > newS.length() && (oldStr + newStr).length() > (oldS + newS).length() && out.contains(oldS)) {
+						oldStr = oldS;
+						newStr = newS;
+						replaced = true;
 					}
 				}
 				if (replaced) break;
