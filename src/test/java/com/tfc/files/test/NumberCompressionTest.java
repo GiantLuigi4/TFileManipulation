@@ -1,6 +1,5 @@
 package com.tfc.files.test;
 
-import com.tfc.files.compression.Idk;
 import com.tfc.files.compression.Numbers;
 
 import java.text.SimpleDateFormat;
@@ -27,9 +26,12 @@ public class NumberCompressionTest {
 		System.out.println("Compressed: " + output);
 		System.out.println("Saved bytes: " + (input.length() - output.length()));
 		
-//		String compressed = Idk.compress(input, 435793475);
-//		System.out.println();
-//		System.out.println("Saved byes: " + (input.length() - compressed.length()));
+//		input = input;
+//		System.out.println("Lump source: " + input);
+//		output = Numbers.lumpCompress(input);
+//		System.out.println("Lump compressed: " + output);
+//		decompressed = Numbers.lumpDecompress(output);
+//		System.out.println("Lump decompressed: " + decompressed);
 	}
 	
 	public static String generate(int length) {

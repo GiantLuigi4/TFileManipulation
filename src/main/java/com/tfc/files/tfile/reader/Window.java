@@ -84,10 +84,9 @@ public class Window extends JComponent implements MouseWheelListener, MouseListe
 		TFile fileRead = currentFile;
 		try {
 			for (int i = 0; i < depth; i++) {
-				fileRead = fileRead.getInner();
+				fileRead = fileRead.getOrCreateInnerTFile();
 			}
 		} catch (Throwable ignored) {
-			fileRead.createInnerTFile();
 		}
 		Set<String> names = fileRead.listAllNames();
 		Object[] namesArray = names.toArray();
@@ -139,7 +138,7 @@ public class Window extends JComponent implements MouseWheelListener, MouseListe
 		}
 		Set<String> names = fileRead.listAllNames();
 		if (scroll < names.size() - num) {
-			scroll += e.getWheelRotation() * -1;
+			scroll += e.getWheelRotation();
 		} else {
 			scroll = names.size() - num;
 		}

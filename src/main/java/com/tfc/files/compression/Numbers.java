@@ -172,4 +172,79 @@ public class Numbers {
 		if (useMultiplication) toDecompress = decompressMultiplication(toDecompress);
 		return toDecompress;
 	}
+	
+//	/**
+//	 * idk, probably lossy
+//	 *
+//	 * @param toCompress the string to compress
+//	 * @return the compressed string
+//	 */
+//	public static String lumpCompress(String toCompress) {
+//		int index = toCompress.length();
+//		for (int i = 1; i <= 9; i++) {
+//			int val = toCompress.indexOf(""+i);
+//			if (val != -1) index = Math.min(index, val);
+//		}
+//		while (index != -1) {
+//			int lastIndex = index;
+//			int point = 0;
+//			long number = 0;
+//			boolean isNum = true;
+//			if (toCompress.charAt(index+1) == (char)5) {
+//				break;
+//			}
+//			while (isNum && point <= 4) {
+//				isNum = false;
+//				if (index + point >= toCompress.length()) break;
+//				char c1 = toCompress.charAt(index + point);
+//				for (int i = 0; i <= 9; i++) {
+//					if (("" + c1).equals("" + i)) {
+//						number *= 10;
+//						number += i;
+//					}
+//				}
+//				point++;
+//				if (index + point >= toCompress.length()) break;
+//				char c = toCompress.charAt(index + point);
+//				isNum = c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9';
+//			}
+//			if (number > 99) {
+//				toCompress = toCompress.replace("" + number, (""+(char)5)+(""+((char)number))+(""+(char)5));
+//				index += 3;
+//			} else {
+//				index += ("" + number).length();
+//			}
+//			index = toCompress.length();
+//			String read = toCompress.substring(lastIndex);
+//			for (int i = 1; i <= 9; i++) {
+//				int val = read.indexOf(""+i)+lastIndex;
+//				if (val != -1) index = Math.min(index, val);
+//			}
+//			if (index == toCompress.length()) {
+//				break;
+//			}
+//		}
+//		return toCompress;
+//	}
+//
+//	public static String lumpDecompress(String text) {
+//		String char5 = (""+((char)5));
+//		String threeChar5 = char5+char5+char5;
+//		text = text.replace(threeChar5,"5");
+//		while (text.contains(char5)) {
+//			String parse = text.substring(text.indexOf(char5)+1);
+//			int index = 0;
+//			int val = 0;
+//			StringBuilder textReplace = new StringBuilder(char5);
+//			while (!(""+parse.charAt(index)).equals(char5)) {
+//				val += parse.charAt(index);
+//				textReplace.append(parse.charAt(index));
+//				index+=1;
+//			}
+//			textReplace.append(char5);
+//			text = text.replace(textReplace.toString(),""+val);
+////			System.out.println(text);
+//		}
+//		return text;
+//	}
 }

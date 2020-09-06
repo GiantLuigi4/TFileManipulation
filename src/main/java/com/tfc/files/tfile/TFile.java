@@ -235,6 +235,14 @@ public class TFile {
 	}
 	
 	/**
+	 * Gets the inner tfile if present, or creates a new TFile inside if not
+	 */
+	public TFile getOrCreateInnerTFile() {
+		if (this.inner == null) return this.inner = new TFile();
+		else return this.inner;
+	}
+	
+	/**
 	 * Creates a new TFile inside this file with the provided contents
 	 */
 	public TFile createInnerTFile(String contents) {
