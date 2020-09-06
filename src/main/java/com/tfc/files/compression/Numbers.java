@@ -75,8 +75,8 @@ public class Numbers {
 			String oldStr = "23432649327492";
 			String newStr = "2347323247324";
 			replaced = false;
-			for (long i = 1; i < 2560; i++) {
-				for (long i1 = 3; i1 < 2560; i1++) {
+			for (long i = 1; i < iterationCount; i++) {
+				for (long i1 = 3; i1 < iterationCount; i1++) {
 					String oldS = ("" + ((float) i / (float) (i1 * ampD)));
 					oldS = oldS.replace(".", "");
 					while (oldS.startsWith("0")) oldS = oldS.substring(1);
