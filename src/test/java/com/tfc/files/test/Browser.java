@@ -19,7 +19,7 @@ public class Browser {
 				"inner.file\n" +
 				"__inner2.txt\n" +
 				"inner.file2\n" +
-				"").replace("_",""+TFile.getIndentChar());
+				"").replace("_", "" + TFile.getIndentChar());
 		new Window(new TFile(new File("D:\\Programs\\Minecraft\\modSources\\TFileManipulation\\test.tfile"))).start();
 	}
 }

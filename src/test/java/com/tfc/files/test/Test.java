@@ -20,23 +20,24 @@ public class Test {
 				"inner.file\n" +
 				"__inner2.txt\n" +
 				"inner.file2\n" +
-				"").replace("_",""+TFile.getIndentChar())
+				"").replace("_", "" + TFile.getIndentChar())
 		);
 		System.out.println(file.toString());
-		write(file,"Source");
-		file.addFile("hello1.txt","" +
+		write(file, "Source");
+		file.addFile("hello1.txt", "" +
 				"this is a test file\n" +
 				"file created from in java" +
 				"");
-		write(file,"Modified");
+		write(file, "Modified");
 	}
 	
-	private static void write(TFile file,String postFix) {
+	private static void write(TFile file, String postFix) {
 		try {
-			String dirWrite = dir+"\\test"+postFix+".tfile";
+			String dirWrite = dir + "\\test" + postFix + ".tfile";
 			File f = new File(dirWrite);
 			if (!f.exists()) f.createNewFile();
-			Writer.write(file,dirWrite);
-		} catch (Throwable ignored) {}
+			Writer.write(file, dirWrite);
+		} catch (Throwable ignored) {
+		}
 	}
 }

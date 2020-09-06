@@ -8,6 +8,12 @@ public class Numbers {
 	private static final int ampM = 128;
 	private static final int ampD = 64;
 	
+	private static int iterationCount = 2560;
+	
+	public static void setIterationCount(int amount) {
+		iterationCount = amount;
+	}
+	
 	/**
 	 * helper method for amplifying a value so that it's larger than it should be
 	 * without this the two numbers always multiply to be smaller than the two numbers being multiplied
@@ -30,17 +36,17 @@ public class Numbers {
 	public static String compressMultiplication(String toCompress) {
 		String out = toCompress;
 		boolean replaced = true;
-		while (replaced) {
+		while (true) {
 			String oldStr = "23432649327492";
 			String newStr = "2347323247324";
 			replaced = false;
-			for (long i = 2; i < 2560; i++) {
-				for (long i1 = 2; i1 < 2560; i1++) {
+			for (long i = 2; i < iterationCount; i++) {
+				for (long i1 = 2; i1 < iterationCount; i1++) {
 					String oldS = ("" + amp(i, i1));
 					String newS = (((char) 1) + "" + i + "*" + i1 + "" + ((char) 1));
 					if (out.contains(oldS)) {
 						if (oldS.length() > newS.length()) {
-							if ((oldStr+newStr).length() > (oldS+newS).length()) {
+							if ((oldStr + newStr).length() > (oldS + newS).length()) {
 								oldStr = oldS;
 								newStr = newS;
 								replaced = true;
@@ -48,8 +54,11 @@ public class Numbers {
 						}
 					}
 				}
+				if (replaced) break;
 			}
-			if (!oldStr.equals("") && !newStr.equals("")) {
+			if (!replaced) {
+				break;
+			} else if (!oldStr.equals("23432649327492") && !newStr.equals("2347323247324")) {
 				out = out.replace(oldStr, newStr);
 			}
 		}
@@ -66,19 +75,19 @@ public class Numbers {
 	public static String compressDivision(String toCompress) {
 		String out = toCompress;
 		boolean replaced = true;
-		while (replaced) {
+		while (true) {
 			String oldStr = "23432649327492";
 			String newStr = "2347323247324";
 			replaced = false;
 			for (long i = 1; i < 2560; i++) {
 				for (long i1 = 3; i1 < 2560; i1++) {
-					String oldS = ("" + ((float)i / (float) (i1*ampD)));
-					oldS = oldS.replace(".","");
+					String oldS = ("" + ((float) i / (float) (i1 * ampD)));
+					oldS = oldS.replace(".", "");
 					while (oldS.startsWith("0")) oldS = oldS.substring(1);
 					String newS = (((char) 2) + "" + i + "/" + i1 + "" + ((char) 2));
 					if (out.contains(oldS)) {
 						if (oldS.length() > newS.length()) {
-							if ((oldStr+newStr).length() > (oldS+newS).length()) {
+							if ((oldStr + newStr).length() > (oldS + newS).length()) {
 								oldStr = oldS;
 								newStr = newS;
 								replaced = true;
@@ -87,7 +96,9 @@ public class Numbers {
 					}
 				}
 			}
-			if (!oldStr.equals("") && !newStr.equals("")) {
+			if (!replaced) {
+				break;
+			} else {
 				out = out.replace(oldStr, newStr);
 			}
 		}
@@ -129,8 +140,8 @@ public class Numbers {
 			int val1 = Integer.parseInt(num1);
 			int val2 = Integer.parseInt(num2);
 			float result = ((float) val1 / (float) val2);
-			String res = ""+result;
-			res = res.replace(".","");
+			String res = "" + result;
+			res = res.replace(".", "");
 			toDecompress = toDecompress.replace(("" + ((char) 2)) + parse + ("" + ((char) 2)), res);
 		}
 		return toDecompress;
