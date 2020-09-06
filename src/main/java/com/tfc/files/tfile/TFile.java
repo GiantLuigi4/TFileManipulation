@@ -17,12 +17,13 @@ public class TFile {
 	private TFile inner = null;
 	private final HashMap<String, String> otherFileHashMap = new HashMap<>();
 	
-	private static final char indentChar = (char)1;
+	private static final char indentChar = (char) 1;
 	
 	/**
 	 * the character that represents an "indent"
 	 * single indent = file name
 	 * double indent = inner file
+	 *
 	 * @return the character that represents an indent
 	 */
 	public static char getIndentChar() {
@@ -37,6 +38,7 @@ public class TFile {
 	
 	/**
 	 * read a TFile from a string
+	 *
 	 * @param content the string to read from
 	 */
 	public TFile(@NotNull String content) {
@@ -94,6 +96,7 @@ public class TFile {
 	
 	/**
 	 * Reads and instances a TFile from a file
+	 *
 	 * @param file the file to read
 	 * @throws IOException if the file can't be read or doesn't exist
 	 */
@@ -103,6 +106,7 @@ public class TFile {
 	
 	/**
 	 * helper method for file constructor
+	 *
 	 * @param file the file to read
 	 * @return a string of the contents of the file
 	 * @throws IOException if the file can't be read or doesn't exist
@@ -112,12 +116,13 @@ public class TFile {
 		byte[] bytes = new byte[reader.available()];
 		reader.read(bytes);
 		StringBuilder builder = new StringBuilder();
-		for (byte b:bytes) builder.append((char)b);
+		for (byte b : bytes) builder.append((char) b);
 		return builder.toString();
 	}
 	
 	/**
 	 * this is for saving
+	 *
 	 * @return the string of the tfile
 	 */
 	public String toString() {
@@ -130,7 +135,7 @@ public class TFile {
 		});
 		if (inner != null) {
 			for (String s : inner.toString().split("\n")) {
-				if (s.startsWith(""+indentChar)) {
+				if (s.startsWith("" + indentChar)) {
 					builder.append(indentChar);
 				}
 				builder.append(s).append("\n");
@@ -148,6 +153,7 @@ public class TFile {
 	
 	/**
 	 * get the contents of a file
+	 *
 	 * @param name the name of the file
 	 * @return the text of the file
 	 */
@@ -157,6 +163,7 @@ public class TFile {
 	
 	/**
 	 * get the contents of a file
+	 *
 	 * @param name the name of the file
 	 * @return the text of the file, or if it doesn't exist, return the default
 	 */
@@ -166,6 +173,7 @@ public class TFile {
 	
 	/**
 	 * get the contents of a file
+	 *
 	 * @param name the name of the file
 	 * @return the text of the file, or if it doesn't exist, return the default
 	 */
@@ -175,42 +183,46 @@ public class TFile {
 	
 	/**
 	 * add a new file
+	 *
 	 * @param name the name of the file
 	 * @param text the contents of the file
 	 */
 	public void addFile(String name, String text) {
-		this.otherFileHashMap.put(name,text);
+		this.otherFileHashMap.put(name, text);
 	}
 	
 	/**
 	 * overwrite a file
+	 *
 	 * @param name the name of the file
 	 * @param text the new contents of the file
 	 */
 	public void replaceFile(String name, String text) {
-		this.otherFileHashMap.replace(name,text);
+		this.otherFileHashMap.replace(name, text);
 	}
 	
 	/**
 	 * add or overwrite a file
+	 *
 	 * @param name the name of the file
 	 * @param text the new contents of the file
 	 */
 	public void addOrReplaceFile(String name, String text) {
-		if (!otherFileHashMap.containsKey(name)) otherFileHashMap.put(name,text);
-		else this.otherFileHashMap.replace(name,text);
+		if (!otherFileHashMap.containsKey(name)) otherFileHashMap.put(name, text);
+		else this.otherFileHashMap.replace(name, text);
 	}
 	
 	/**
 	 * for if you want to make a class loader that uses tfiles for some reason, here ya go
 	 * (I do not know if this will actually work for class loaders)
+	 *
 	 * @param name the name of the file
 	 * @return an input stream of the contents of the file
 	 */
 	public InputStream getAsStream(String name) {
 		char[] chars = otherFileHashMap.get(name).toCharArray();
 		byte[] bytes = new byte[chars.length];
-		for (int i=0;i<chars.length;i++) bytes[i] = (byte)chars[i];
+		for (int i = 0; i < chars.length; i++) bytes[i] = (byte) chars[i];
 		return new ByteArrayInputStream(bytes);
 	}
 	
@@ -230,6 +242,7 @@ public class TFile {
 	
 	/**
 	 * run a consumer for all files
+	 *
 	 * @param forEach the function to call on all files
 	 */
 	public void forEach(BiConsumer<String, String> forEach) {

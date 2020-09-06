@@ -31,6 +31,7 @@ public class Window extends JComponent implements MouseWheelListener, MouseListe
 	
 	/**
 	 * change the file that the browser is reading
+	 *
 	 * @param currentFile the new tfile
 	 */
 	public void setCurrentFile(TFile currentFile) {
@@ -39,6 +40,7 @@ public class Window extends JComponent implements MouseWheelListener, MouseListe
 	
 	/**
 	 * instance a file browser
+	 *
 	 * @param file the file to browse
 	 */
 	public Window(TFile file) {
@@ -59,7 +61,8 @@ public class Window extends JComponent implements MouseWheelListener, MouseListe
 	
 	/**
 	 * start the file browser
-	 * @param width the width of the browser
+	 *
+	 * @param width  the width of the browser
 	 * @param height the height of the browser
 	 */
 	public void start(int width, int height) {
@@ -71,6 +74,7 @@ public class Window extends JComponent implements MouseWheelListener, MouseListe
 	/**
 	 * this draws all of the files
 	 * (why did I even javadoc this?)
+	 *
 	 * @param g the graphics instance
 	 */
 	@Override
@@ -119,6 +123,7 @@ public class Window extends JComponent implements MouseWheelListener, MouseListe
 	
 	/**
 	 * handle scrolling
+	 *
 	 * @param e the scroll event
 	 */
 	@Override
@@ -143,6 +148,7 @@ public class Window extends JComponent implements MouseWheelListener, MouseListe
 	
 	/**
 	 * handle clicking
+	 *
 	 * @param e the mouse click event
 	 */
 	@Override
