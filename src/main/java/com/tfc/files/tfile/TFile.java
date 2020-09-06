@@ -230,7 +230,24 @@ public class TFile {
 	 * Creates a new TFile inside this file
 	 */
 	public TFile createInnerTFile() {
-		return this.inner = new TFile();
+		this.inner = new TFile();
+		return this.inner;
+	}
+	
+	/**
+	 * Creates a new TFile inside this file with the provided contents
+	 */
+	public TFile createInnerTFile(String contents) {
+		this.inner = new TFile(contents);
+		return this.inner;
+	}
+	
+	/**
+	 * Creates a new TFile inside this file from the provided file
+	 */
+	public TFile createInnerTFile(File file) throws IOException {
+		this.inner = new TFile(file);
+		return this.inner;
 	}
 	
 	/**
