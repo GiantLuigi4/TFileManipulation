@@ -85,14 +85,10 @@ public class Numbers {
 					oldS = oldS.replace(".", "");
 					while (oldS.startsWith("0")) oldS = oldS.substring(1);
 					String newS = (((char) 2) + "" + i + "/" + i1 + "" + ((char) 2));
-					if (out.contains(oldS)) {
-						if (oldS.length() > newS.length()) {
-							if ((oldStr + newStr).length() > (oldS + newS).length()) {
-								oldStr = oldS;
-								newStr = newS;
-								replaced = true;
-							}
-						}
+					if (oldS.length() > newS.length() && (oldStr + newStr).length() > (oldS + newS).length() && out.contains(oldS)) {
+						oldStr = oldS;
+						newStr = newS;
+						replaced = true;
 					}
 				}
 			}
