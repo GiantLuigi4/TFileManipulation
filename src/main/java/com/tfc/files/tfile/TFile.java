@@ -115,9 +115,10 @@ public class TFile {
 		FileInputStream reader = new FileInputStream(file);
 		byte[] bytes = new byte[reader.available()];
 		reader.read(bytes);
-		StringBuilder builder = new StringBuilder();
-		for (byte b : bytes) builder.append((char) b);
-		return builder.toString();
+//		StringBuilder builder = new StringBuilder();
+//		for (byte b : bytes) builder.append((char) b);
+//		return builder.toString();
+		return new String(bytes);
 	}
 	
 	/**
