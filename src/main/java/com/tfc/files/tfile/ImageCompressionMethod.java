@@ -34,7 +34,7 @@ public class ImageCompressionMethod {
 		out3.close();
 	}
 	
-	private static byte[] decompressRGB(byte[] compressed) throws IOException {
+	public static byte[] decompressRGB(byte[] compressed) throws IOException {
 		BufferedImage image = ImageIO.read(new ByteArrayInputStream(compressed));
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		try {
@@ -56,7 +56,7 @@ public class ImageCompressionMethod {
 		return out;
 	}
 	
-	private static byte[] decompressRGBA(byte[] compressed) throws IOException {
+	public static byte[] decompressRGBA(byte[] compressed) throws IOException {
 		BufferedImage image = ImageIO.read(new ByteArrayInputStream(compressed));
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
 		try {
